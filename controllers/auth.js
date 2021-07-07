@@ -1,52 +1,91 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const logger = require('../util/logger');
 const tokenUtil = require('../util/token');
+const {
+  BAD_REQUEST,
+  CREATED,
+  NOT_FOUND,
+  UNAUTHORIZED,
+  OK,
+} = require('../constants/statusCodes');
+
 exports.register = async (req, res) => {
-  const { first_name, last_name, email, password } = req.body;
+  const {
+    first_name,
+    last_name,
+    phone_number,
+    address,
+    is_admin,
+    email,
+    password,
+  } = req.body;
+  const user = new User({
+    first_name,
+    last_name,
+    phone_number,
+    address,
+    is_admin,
+    email,
+    password: bcrypt.hashSync(password, 10),
+  });
+
+  let saveUser;
+
   try {
-    const user = await User.create({
-      first_name,
-      last_name,
-      email,
-      password,
-    });
-    const token = tokenUtil.generate(user._id);
-    res.status(201).json({ status: 'success', token, data: user });
-  } catch (error) {
-    res.status(201).json({ status: 'error', data: error.message });
+    saveUser = await user.save();
+  } catch (err) {
+    logger.error(err.message);
   }
+
+  if (!saveUser) {
+    return res.status(BAD_REQUEST).json({
+      status: 'error',
+      message: 'Failed to create user!',
+    });
+  }
+  const token = tokenUtil.generate(user._id);
+
+  return res.status(CREATED).json({
+    status: 'success',
+    token,
+    data: {
+      first_name: saveUser.first_name,
+      email: saveUser.email,
+    },
+  });
 };
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) {
-    res.status(400).json({
-      success: false,
-      error: 'Please provide an email and a password',
-    });
-  }
+
   try {
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ email });
     if (!user) {
-      res.status(404).json({
-        success: false,
-        error: 'Invalid crudentials',
+      return res.status(NOT_FOUND).json({
+        status: 'failed',
+        message: 'User not found.',
       });
     }
 
-    const isMatch = await user.matchPasswords(password);
-    if (!isMatch) {
-      res.status(404).json({
-        success: false,
-        error: 'Invalid crudentials',
+    if (user && bcrypt.compareSync(password, user.password)) {
+      const token = tokenUtil.generate(user._id);
+
+      return res.status(OK).json({
+        status: 'success',
+        token,
+        data: {
+          first_name: user.first_name,
+          email: user.email,
+        },
       });
     }
-
-    res.status(200).json({ success: true, token: 'huhuhue32+', data: user });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: error.message,
+    return res.status(UNAUTHORIZED).json({
+      status: 'error',
+      message: 'Wrong password.',
     });
+  } catch (error) {
+    logger.error(error.message);
   }
 };
 exports.forgotpassword = (req, res) => {

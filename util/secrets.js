@@ -17,5 +17,5 @@ for (const credential of requiredCredentials) {
 module.exports = {
   MONGO_URI,
   NODE_ENV,
-  JWT_SECRET_KEY
+  JWT_SECRET_KEY,
 };

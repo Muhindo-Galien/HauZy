@@ -3,7 +3,7 @@ name: "Main Pipeline"
 on:
   push:
     branches:
-     - main
+      - main
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, edited]
@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: ['12.x', '13.x', '14.x']
+          node-version: ["12.x", "13.x", "14.x"]
       - name: npm install
         run: npm install
       - name: format

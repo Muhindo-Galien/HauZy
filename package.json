@@ -4,8 +4,11 @@
   "description": "Hauzy is a web app that allow people to rent  or sell house(s) ",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "NODE_ENV=production node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -18,11 +21,24 @@
   },
   "homepage": "https://github.com/Muhindo-Galien/HauZy#readme",
   "dependencies": {
-    "D": "^1.0.0",
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "D": "^1.0.0",
+    "debug": "^2.6.9",
     "dotenv": "^10.0.0",
+    "dotenv-defaults": "^2.0.2",
     "express": "^4.17.1",
+    "http-errors": "^1.7.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2",
-    "nodemon": "^2.0.9"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.9",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
   }
 }

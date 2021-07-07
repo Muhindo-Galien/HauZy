@@ -1,19 +1,38 @@
-require("dotenv").config({path: "./config.env"});
+const createError = require('http-errors');
 const express = require('express');
-const app = express();
-const connectDB = require("./config/db");
+const morgan = require('morgan');
+const cors = require('cors');
+const connectDB = require('./config/db');
 
-// connectDB
+const routes = require('./routes');
+
+const app = express();
 
 connectDB();
 
+app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/auth", require('./routes/auth'))
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(routes);
 
-const server = app.listen(PORT, ()=>{console.log("Backend runnig");});
-process.on("unhandeledRejection", (err, promise)=>{
-    console.log(`Logged Error: ${err}`);
-    server.close(()=> process.exit(1))
-})
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+// 404 error handler
+app.use((error, req, res) => {
+  // set locals, only providing error in development
+  res.locals.message = error.message;
+  res.locals.error = req.app.get('env') === 'development' ? error : {};
+
+  // render 404 page
+  res.status(error.status || 500);
+  res.send({
+    error: error.message,
+  });
+});
+
+module.exports = app;

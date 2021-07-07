@@ -1,0 +1,28 @@
+{
+  "name": "hauzy",
+  "version": "1.0.0",
+  "description": "Hauzy is a web app that allow people to rent  or sell house(s) ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhindo-Galien/HauZy.git"
+  },
+  "author": "Muhindo Galien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muhindo-Galien/HauZy/issues"
+  },
+  "homepage": "https://github.com/Muhindo-Galien/HauZy#readme",
+  "dependencies": {
+    "D": "^1.0.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "nodemon": "^2.0.9"
+  }
+}

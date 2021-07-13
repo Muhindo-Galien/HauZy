@@ -2,8 +2,11 @@ const router = require('express').Router();
 const { NOT_FOUND, BAD_REQUEST } = require('../constants/statusCodes');
 
 const authRouter = require('./auth');
+const propertyRouter = require('./property');
+
 
 router.use('/auth', authRouter);
+router.use('/property', propertyRouter);
 
 // catch all
 router.all('*', (req, res) => {

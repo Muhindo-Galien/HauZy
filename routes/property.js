@@ -17,4 +17,4 @@ router.route('/:propertyId').get(propertyGetOne);
 
 
 
-module.exports = router;
+module.exports = router

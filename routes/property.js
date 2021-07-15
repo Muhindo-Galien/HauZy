@@ -1,20 +1,14 @@
-const { propertyCreate,propertyUpdate,propertyGetOne,propertyGetAll, propertyDelete } = require('../controllers/properties');
+const { createProperty,updateProperty,deleteProperty,getAllProperties,getPropertyByType,getPropertyById
+} = require('../controllers/properties');
 const express = require('express');
 const router = express.Router();
-const { authToken } = require('../middlewares/authToken')
+const { isAuthenticated } = require('../middlewares/isAuthenticated')
 
+router.route('/').post(isAuthenticated,createProperty);
+router.route('/:propertyid/sold').patch(isAuthenticated,updateProperty);
+router.route('/:id').delete(isAuthenticated,deleteProperty);
+router.route('/').get(getAllProperties);
+router.route('/').get(getPropertyByType);
+router.route('/:propertyId').get(getPropertyById);
 
-router.route('/').post(authToken, propertyCreate);
-
-router.route('/:id').delete(authToken,propertyDelete);
-
-router.route('/:propertyid/sold').patch(authToken,propertyUpdate);
-
-router.route('/').get(propertyGetAll);
-
-router.route('/:propertyId').get(propertyGetOne);
-// router.route('/').get(propertyGetByType);
-
-
-
-module.exports = router;
+module.exports = router

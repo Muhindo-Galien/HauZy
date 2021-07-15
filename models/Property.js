@@ -5,7 +5,7 @@ const PropertySchema = new mongoose.Schema({
     required: true
   },
   status : String,
-  price : String,
+  price : Number,
   state : String,
   city : String,
   address : String,

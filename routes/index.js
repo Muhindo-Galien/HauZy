@@ -6,6 +6,8 @@ const propertyRouter = require('./property');
 
 
 router.use('/auth', authRouter);
+
+
 router.use('/property', propertyRouter);
 
 // catch all

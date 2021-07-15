@@ -7,11 +7,8 @@ const fs = require('fs');
 const connectDB = require('./config/db');
 
 const routes = require('./routes');
-
 const app = express();
-
 connectDB();
-
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs.log'), {
   flags: 'a',
 });

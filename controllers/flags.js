@@ -10,7 +10,7 @@ exports.createFlag = async(req,res) => {
     description } = req.body;
 
   const flag = new Flag({
-    property_id: req.newProperty.id,
+    property_id: req.params.propertyId,
     reason,
     description })
   try{

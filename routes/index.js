@@ -3,12 +3,11 @@ const { NOT_FOUND, BAD_REQUEST } = require('../constants/statusCodes');
 
 const authRouter = require('./auth');
 const propertyRouter = require('./property');
-
+const flagRouter = require('./flag');
 
 router.use('/auth', authRouter);
-
-
 router.use('/property', propertyRouter);
+router.use('/flag', flagRouter);
 
 // catch all
 router.all('*', (req, res) => {

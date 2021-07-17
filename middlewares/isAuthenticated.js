@@ -21,4 +21,4 @@ exports.isAuthenticated = (req, res, next) => {
     req.user= user;
     next();
   })
-}
+};

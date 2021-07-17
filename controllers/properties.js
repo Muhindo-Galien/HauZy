@@ -59,7 +59,6 @@ exports.updateProperty = async(req, res) => {
 exports.deleteProperty = async(req, res) => {
   try{
     await Property.findByIdAndDelete(req.params.id);
-    console.log(req.params.id)
     res.status(OK).json({
       status: 'success',
       message: 'Property successfully deleted!'

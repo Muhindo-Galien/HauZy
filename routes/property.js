@@ -2,7 +2,7 @@ const { createProperty,updateProperty,deleteProperty,getAllProperties,getPropert
 } = require('../controllers/properties');
 const express = require('express');
 const router = express.Router();
-const { isAuthenticated } = require('../middlewares/isAuthenticated')
+const { isAuthenticated } = require('../middlewares/isAuthenticated');
 
 router.route('/').post(isAuthenticated,createProperty);
 router.route('/:propertyid/sold').patch(isAuthenticated,updateProperty);

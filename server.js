@@ -7,11 +7,8 @@ const fs = require('fs');
 const connectDB = require('./config/db');
 
 const routes = require('./routes');
-
 const app = express();
-
 connectDB();
-
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs.log'), {
   flags: 'a',
 });
@@ -22,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 app.use('/api/v1', routes);
+
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

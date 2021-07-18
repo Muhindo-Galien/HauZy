@@ -5,6 +5,10 @@ const authRouter = require('./auth');
 const propertyRouter = require('./property');
 const flagRouter = require('./flag');
 
+router.use('/',(req,res,next) => {
+  res.send('welcome to HauZy');
+  next();
+});
 router.use('/auth', authRouter);
 router.use('/property', propertyRouter);
 router.use('/flag', flagRouter);

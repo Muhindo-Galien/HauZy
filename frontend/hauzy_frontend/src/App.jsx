@@ -1,11 +1,12 @@
 import appRoutes from "./app/routes/_routes_";
 import Routes from "./app/routes";
+import HomeProvider from "./app/modules/context/HomeContext";
 
 function App() {
   return (
-    <div>
+    <HomeProvider>
       <Routes routes={appRoutes} />
-    </div>
+    </HomeProvider>
   );
 }
 

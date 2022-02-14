@@ -2,7 +2,7 @@ import React from 'react';
 
 const Menu  = () => {
     return (
-        <div className='text-white flex flex-row justify-around items-center w-full font-Mulish pl-10'>
+        <div className='text-white flex flex-row justify-around items-center w-full font-Mulish'>
             <p className='cursor-pointer'>Real Estate</p>
             <p className='cursor-pointer'>Invest</p>
             <p className='cursor-pointer'>Contact</p>
@@ -12,4 +12,4 @@ const Menu  = () => {
     );
 };
 
-export default Menu;
+export default Menu

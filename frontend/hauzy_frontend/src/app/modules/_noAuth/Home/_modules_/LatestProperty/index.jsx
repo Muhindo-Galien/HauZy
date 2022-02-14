@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import { useHome } from '../../../../context/HomeContext';
 import PropertyCard from '../../../PropertyCard';
 import property_image from '../../../../../static/images/property_image.jpeg';
-import PropertyPrsentation from './Presentation';
+import PropertyPresentation from './Presentation';
 import PropertySkeleton from '../../../PropertySkeleton';
 
 const LatestProperties = () => {
@@ -16,8 +16,13 @@ const LatestProperties = () => {
    
     return (
         <div>
-            <PropertyPrsentation />
-            <div className='grid grid-cols-3 gap-10 justify-center mt-7 mx-32 md:mx-24 pb-10'>
+            <PropertyPresentation />
+            <div
+                className='grid grid-cols-3 gap-10
+                        justify-center mt-7 mx-32
+                        lg:mx-28 md:mx-10 pb-10 xsm:flex
+                         xsm:flex-col sm:flex sm:flex-col xsm:mx-5 sm:mx-5 xsm:pb5 sm:pb-5'
+            >
                 {
                     !isLoading ? properties.map((property) => {
                         return (

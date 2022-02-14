@@ -4,7 +4,7 @@ import clientsReviews from './DummyData/index';
 
 const ClientsReview = () => {
   return (
-      <div className='shadow-xl my-20 mx-32'>
+    <div className='shadow-xl my-20 lg:my-14 mx-32 lg:mx-28 md:mx-10 xsm:mx-5 sm:mx-5'>
         {
           clientsReviews.map((clientReview) => {
             return (

@@ -16,14 +16,14 @@ const HomeProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const onFetchProperties = useCallback(async () => {
-            setIsLoading(true);
+        setIsLoading(true);
 
-            const response = await get(ENDPOINTS.PROPERTIES);
+        const response = await get(ENDPOINTS.PROPERTIES);
 
-            setProperties(response.data.data);
-            setIsLoading(false);
-        }, []);
-    
+        setProperties(response.data.data);
+        setIsLoading(false);
+        
+    }, []);    
     return (
         <HomeContext.Provider
             value={{

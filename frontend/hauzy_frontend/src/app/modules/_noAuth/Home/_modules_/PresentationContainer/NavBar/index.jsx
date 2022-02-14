@@ -4,11 +4,11 @@ import hauzyLogo from '../../../../../../static/images/HAUZI.png'
 
 const NavBar = () => {
     return(
-        <div className='bg-black flex flex-row items-center'>
-            <div className='px-20'>
+        <div className='bg-black flex flex-row items-center justify-between'>
+            <div className='px-20 md:px-10 xsm:px-4 sm:px-4'>
                 <img src={hauzyLogo} alt='logo' className='w-32'/>
             </div>
-            <div className='border-r h-7'></div>
+            <div className='border-r h-7 xsm:hidden sm:hidden'></div>
             <Menu/>
         </div>
     );

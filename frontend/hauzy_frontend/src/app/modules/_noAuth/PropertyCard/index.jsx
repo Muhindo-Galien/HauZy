@@ -9,10 +9,9 @@ const PropertyCard = ({
   adress,
   status,
   type,
-  key,
 }) => {
   return (
-    <div key={key} className='shadow-2xl w-fit rounded-xl'>
+    <div className='shadow-2xl w-fit rounded-xl'>
       <img src={image_url} alt='card' className='rounded-t-xl' />
       <div className='px-5 py-5 md:px-2 text-slate-700'>
         <p className='font-Poppins'>{price} USD</p>

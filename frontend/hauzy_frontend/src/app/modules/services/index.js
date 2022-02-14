@@ -9,7 +9,7 @@ export const get = async (url) => {
         return response;
     }
 
-    console.log(url);
+    // console.log(url);
     return axios
         .get(url)
         .then(resolveResponse)

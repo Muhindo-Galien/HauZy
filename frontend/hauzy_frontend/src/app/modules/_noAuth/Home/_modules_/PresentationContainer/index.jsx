@@ -5,12 +5,16 @@ import hauzy_landing_page_image from '../../../../../static/images/hauzi_landing
 
 const PresentationContainer = () => {
     return (
-        <div className='flex flex-row bg-black'>
-            <div className='bg-black text-white pb-20'>
-                <NavBar />
-                <Presentation />
+        <div>
+            <div className='flex flex-row bg-black justify-between'>
+                <div className='grid grid-cols-2me bg-black text-white pb-20'>
+                    <NavBar />
+                    <Presentation />
+                </div>
+                <img src={hauzy_landing_page_image}
+                    alt='landing_image'
+                    className='rounded-l-full bg-gradient-to-br from-slate-200 w-full h-auto' />
             </div>
-            <img src={hauzy_landing_page_image} alt='landing_image' className='float-right rounded-l-full bg-gradient-to-br from-slate-200' />
         </div>
     );
 }

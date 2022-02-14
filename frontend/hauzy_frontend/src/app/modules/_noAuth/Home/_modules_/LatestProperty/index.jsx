@@ -3,8 +3,9 @@ import { useHome } from '../../../../context/HomeContext';
 import PropertyCard from '../../../PropertyCard';
 import property_image from '../../../../../static/images/property_image.jpeg';
 import PropertyPrsentation from './Presentation';
+import PropertySkeleton from '../../../PropertySkeleton';
 
-const LatestProperty = () => {
+const LatestProperties = () => {
     const { onFetchProperties, isLoading, properties } = useHome();
     
     useEffect(() => {
@@ -12,15 +13,13 @@ const LatestProperty = () => {
             onFetchProperties();
         }
     }, [onFetchProperties, properties.length]);
-
-    console.log(properties);
-    
+   
     return (
         <div>
-            <PropertyPrsentation/>
-            <div className='grid grid-cols-3 gap-10 justify-center mt-7 ml-32 mr-32 pb-10'>
+            <PropertyPrsentation />
+            <div className='grid grid-cols-3 gap-10 justify-center mt-7 mx-32 md:mx-24 pb-10'>
                 {
-                    !isLoading && properties.map((property) => {
+                    !isLoading ? properties.map((property) => {
                         return (
                             <PropertyCard
                                 image_url={property_image}
@@ -33,7 +32,8 @@ const LatestProperty = () => {
                                 key={property._id}
                             />
                         )
-                    })
+                    }) :
+                        <PropertySkeleton count={3} />
                 }
 
             </div>
@@ -41,4 +41,4 @@ const LatestProperty = () => {
     );
 }
 
-export default LatestProperty;
+export default LatestProperties;

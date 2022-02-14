@@ -16,7 +16,8 @@ const PresentationContainer = () => {
                 </div>
                 {
                     !isMobile &&
-                    <img src={hauzy_landing_page_image}
+                    <img
+                        src={hauzy_landing_page_image}
                         alt='landing_image'
                         className='rounded-l-full bg-gradient-to-br from-slate-200 w-auto h-full align-text-bottom'
                     />

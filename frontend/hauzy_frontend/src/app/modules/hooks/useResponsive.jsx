@@ -4,7 +4,7 @@ const useResponsive = (screen = '(max-width:767px)') => {
     const [match, setMatch] = useState(false);
 
     const watchMedia = window.matchMedia(screen);
-    console.log(watchMedia);
+    // console.log(watchMedia);
 
     const onResizeScreen = (e) => {
         setMatch(typeof e === 'boolean' ? e : e.matches);

@@ -21,7 +21,7 @@ const useResponsive = (screen = '(max-width:767px)') => {
             try {
                 watchMedia.addEventListener('change', onResizeScreen);
             } catch {
-                watchMedia.addListener(onResizeScreen);
+                watchMedia.removeEventListener(onResizeScreen);
             }
         }
 

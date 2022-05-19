@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/Muhindo-Galien/HauZy#readme",
   "dependencies": {
-    "D": "^1.0.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "D": "^1.0.0",
     "debug": "^2.6.9",
     "dotenv": "^10.0.0",
     "dotenv-defaults": "^2.0.2",

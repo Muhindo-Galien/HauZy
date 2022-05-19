@@ -1,5 +1,5 @@
 const ENDPOINTS = {
-    PROPERTIES:'/property'
-}
+  PROPERTIES: "/property",
+};
 
 export default ENDPOINTS;

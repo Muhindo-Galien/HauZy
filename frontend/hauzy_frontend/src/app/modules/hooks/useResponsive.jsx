@@ -1,33 +1,31 @@
 import { useEffect, useState } from "react";
 
-const useResponsive = (screen = '(max-width:767px)') => {
-    const [match, setMatch] = useState(false);
+const useResponsive = (screen = "(max-width:767px)") => {
+  const [match, setMatch] = useState(false);
 
-    const watchMedia = window.matchMedia(screen);
-    // console.log(watchMedia);
+  const watchMedia = window.matchMedia(screen);
 
-    const onResizeScreen = (e) => {
-        setMatch(typeof e === 'boolean' ? e : e.matches);
+  const onResizeScreen = (e) => {
+    setMatch(typeof e === "boolean" ? e : e.matches);
+  };
+
+  useEffect(() => {
+    try {
+      watchMedia.addEventListener("change", onResizeScreen);
+    } catch {
+      watchMedia.addListener(onResizeScreen);
     }
 
-    useEffect(() => {
-        try {
-            watchMedia.addEventListener('change', onResizeScreen);
-        } catch {
-            watchMedia.addListener(onResizeScreen);
-        }
+    return () => {
+      try {
+        watchMedia.addEventListener("change", onResizeScreen);
+      } catch {
+        watchMedia.addListener(onResizeScreen);
+      }
+    };
+  }, [watchMedia]);
 
-        return () => {
-            try {
-                watchMedia.addEventListener('change', onResizeScreen);
-            } catch {
-                watchMedia.addListener(onResizeScreen);
-            }
-        }
-
-    }, [watchMedia]);
-
-    return [match, setMatch];
-}
+  return [match, setMatch];
+};
 
 export default useResponsive;

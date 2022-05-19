@@ -1,7 +1,5 @@
 import noAuthRoutes from "./noAuth.routes";
 
-const appRoutes = [
-    ...noAuthRoutes
-]
+const appRoutes = [...noAuthRoutes];
 
 export default appRoutes;
